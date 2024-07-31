@@ -1,24 +1,14 @@
 # langchain4j-demo
 
-This example leverages a LLM + RAG (Retrieval Augmented Generation), where additional context, additional private data is loaded and is additive to the prompt provided to the LLM.
+This example leverages a LLM running on vLLM.
 
-## Setup
-
-Go to https://openai.com/blog/openai-api
-
-Sign up
-
-Create an API key https://platform.openai.com/api-keys
-
-Provide a credit card for Billing https://platform.openai.com/account/billing/overview
-
-Monitor usage https://platform.openai.com/usage
-
-Create a .env file in the root of the project to hold the API key
+Create a .env file with the appropriate settings for:
 
 ```
-QUARKUS_LANGCHAIN4J_OPENAI_API_KEY=<insert openai.com API key here>
+QUARKUS_LANGCHAIN4J_OPENAI_BASE_URL=https://llm-predictor-llm.apps.cluster-abc132.sandbox999.opentlc.com/v1
+QUARKUS_LANGCHAIN4J_OPENAI_CHAT_MODEL_MODEL_NAME=llm
 ```
+
 
 ## Running the application in dev interactive mode
 You can run your application in dev mode that enables live coding using:
@@ -30,60 +20,23 @@ You can run your application in dev mode that enables live coding using:
 open http://localhost:8080
 ```
 
-![AI Buddy](./readme-images/main-screen.png)
-
-## Interacting with the application
-
-Example questions for the Bank
-
-**what are the different types of accounts?**
-
-**what is the minimum deposite for each?**
-
-**what are the fees for each?**
-
-Example questions for the Museum
-
-**please describe youre exhibitions**
-
-**what is the minimum size for a youth group visit**
-
-**what were the inspirations for Elijah Montrose?**
-
-Example questions for the grocery store
-
-**what food should I eat?**
-
-Example questions for the Insurance company
-
-**what policies do you offer?**
-
-**does the silver elite require a medical exam?**
-
-**Are high risk activities not covered by the 20-year term?**
-
-**Are high risk activities not covered by the silver elite 30-year term?**
+![AI Buddy](./readme-images/bot-1.png)
 
 
 ## Parts
 
 **Bot.java** provides the name for the AI
 
-**IngestorExample.java** handles the sucking in of the resources/catalog/*.txt files as additional data to inform the LLM.  "bank" and "museum" are two options to contextualize the AI.
-
-**RetrieverExample.java** handles the merging of this additional data into the prompt that is sent to the LLM
-
-To see this additional prompt, turn on logging 
 
 application.properties
 
 ```
 quarkus.langchain4j.openai.log-requests=true
+quarkus.langchain4j.openai.log-responses=true
 ```
 
 
-
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+> **_NOTE:_**  Quarkus ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
 
 ## Packaging and running the application
 
