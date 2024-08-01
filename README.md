@@ -9,6 +9,12 @@ QUARKUS_LANGCHAIN4J_OPENAI_BASE_URL=https://llm-predictor-llm.apps.cluster-abc13
 QUARKUS_LANGCHAIN4J_OPENAI_CHAT_MODEL_MODEL_NAME=llm
 ```
 
+Or use just use `export` commands
+
+```
+export QUARKUS_LANGCHAIN4J_OPENAI_BASE_URL=https://fredbot-app-fredbot-app-dev-ai.apps.cluster-abcde.sandbox999.opentlc.com/v1
+export QUARKUS_LANGCHAIN4J_OPENAI_CHAT_MODEL_MODEL_NAME=fredbot-app
+```
 
 ## Running the application in dev interactive mode
 You can run your application in dev mode that enables live coding using:
@@ -25,10 +31,10 @@ open http://localhost:8080
 
 ## Parts
 
-**Bot.java** provides the name for the AI
+**Bot.java** provides the system message for the LLM
 
 
-application.properties
+application.properties includes logging
 
 ```
 quarkus.langchain4j.openai.log-requests=true
